@@ -1,0 +1,10 @@
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\bin\Debug\Yidaozhan.Json.dll
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\bin\Debug\Yidaozhan.Json.pdb
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\bin\Debug\Yidaozhan.Json.xml
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.vbproj.AssemblyReference.cache
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.Resources.resources
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.vbproj.GenerateResource.cache
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.vbproj.CoreCompileInputs.cache
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.dll
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.xml
+C:\Users\yidaozhan\source\repos\Yidaozhan.Json\Yidaozhan.Json\obj\Debug\Yidaozhan.Json.pdb
