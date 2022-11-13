@@ -35,15 +35,15 @@ Public Class JsonParser
         index = 1
         psErrors = ""
         On Error Resume Next
-        Call skipChar(str, index)
+        Call SkipChar(str, index)
         Select Case Mid(str, index, 1)
             Case "{"
                 Parse = ParseObject(str, index)
             Case "["
-                Parse = ParseArray(str, index)
+                Parse = ParseArray(str, index) 'Collection
             Case Else
                 psErrors = "Invalid JSON"
-                Parse = New Dictionary(Of Object, Object)
+                Parse = New Dictionary(Of String, Object)
         End Select
         Return Parse
     End Function
@@ -377,33 +377,37 @@ Public Class JsonParser
     Public Function Stringify(ByRef obj As Object) As String
         Dim SB As String = ""
         Select Case VarType(obj)
-            Case vbNull
+            Case VariantType.Null
                 SB &= "null"
-            Case vbDate
+            Case VariantType.Date
                 SB &= """" & CStr(obj) & """"
-            Case vbString
+            Case VariantType.String
                 SB &= """" & Encode(obj) & """"
-            Case vbObject
+            Case VariantType.Boolean
+                If obj Then SB &= "true" Else SB &= "false"
+            Case vbVariant, vbArray, vbArray + vbVariant
+                Dim sEB
+                SB &= MultiArray(obj, 1, "", sEB)
+            Case Else
 
                 Dim bFI As Boolean
                 Dim i As Long
 
                 bFI = True
-                If TypeName(obj) = "Dictionary" Then
+                If TypeName(obj).StartsWith("Dictionary") Then
 
                     SB &= "{"
-                    Dim keys
-                    keys = obj.keys
+                    Dim keys As Dictionary(Of String, Object).KeyCollection
+                    keys = obj.Keys
                     For i = 0 To obj.Count - 1
                         If bFI Then bFI = False Else SB &= ","
-                        Dim key
+                        Dim key As String
                         key = keys(i)
                         SB &= """" & key & """:" & Stringify(obj.Item(key))
                     Next i
                     SB &= "}"
 
-                ElseIf TypeName(obj) = "Collection" Then
-
+                ElseIf TypeName(obj).StartsWith("Collection") Then
                     SB &= "["
                     Dim Value
                     For Each Value In obj
@@ -413,15 +417,8 @@ Public Class JsonParser
                     SB &= "]"
 
                 End If
-            Case vbBoolean
-                If obj Then SB &= "true" Else SB &= "false"
-            Case vbVariant, vbArray, vbArray + vbVariant
-                Dim sEB
-                SB &= multiArray(obj, 1, "", sEB)
-            Case Else
-                SB &= Replace(obj, ",", ".")
         End Select
-
+        Debug.Print(SB)
         Return SB
     End Function
 
